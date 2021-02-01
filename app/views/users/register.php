@@ -9,7 +9,7 @@
                 <p class="mt-2">Please fill the fields below to register</p>
             </div>
             <div class="card-body">
-                <form class="form" role="form">
+                <form class="form" role="form" method="post" action="<?php echo URLROOT . '/users/register' ?>">
                     <div class="form-group">
                         <label for="name">Name<sup>*</sup></label>
                         <input type="text" class="form-control" id="name" name="name" placeholder="Full name">
