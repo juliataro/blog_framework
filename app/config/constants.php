@@ -1,7 +1,7 @@
 <?php
 
-//Project name
-define('PROJECT_NAME', 'projectname');
+//Project name blog_Tartu_Vacational_Educational_Center
+define('PROJECT_NAME', 'blog_framework');
 
 //App root dir
 define('APPROOT', dirname(dirname(__FILE__)));
@@ -10,8 +10,8 @@ define('APPROOT', dirname(dirname(__FILE__)));
 define('URLROOT', 'http://' . $_SERVER['HTTP_HOST'] . '/' . PROJECT_NAME);
 
 //db params
-define('DB_HOST', 'host');
-define('Db_USER', 'user');
-define('DB_PASS', 'pass');
-define('DB_NAME', 'dbname');
+define('DB_HOST', 'localhost');
+define('Db_USER', 'root');
+define('DB_PASS', '');
+define('DB_NAME', 'blog_framework');
 
