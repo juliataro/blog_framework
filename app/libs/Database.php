@@ -53,7 +53,7 @@ class Database
     }
 
     public function execute(){
-        return $this->stmt->execute();
+        $this->stmt->execute();
     }
 
     public function getOne()
@@ -71,4 +71,6 @@ class Database
     public function rowCount(){
         return $this->stmt->rowCount();
     }
+
+
 }
