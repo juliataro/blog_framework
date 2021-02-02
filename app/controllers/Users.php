@@ -50,10 +50,22 @@ class Users extends Controller
             }
             print_r($data);
         } else {
-            $this->view('users/register');
+          $data = array(
+              'name' => '',
+               'email' => '',
+               'password' => '',
+               'confirm_password' => '',
+               'name_err' => '',
+               'email_err' => '',
+               'password_err' => '',
+               'confirm_password_err' => ''
+            );
 
+        }
+        $this->view('users/register', $data);
 
-    }  }
+    }
+
 
     public function login()
     {
