@@ -48,7 +48,6 @@ class Users extends Controller
             } else if ($data['password'] !== $data['confirm_password']) {
                 $data['confirm_password_err'] = 'Passwords do not match';
             }
-            print_r($data);
         } else {
           $data = array(
               'name' => '',
