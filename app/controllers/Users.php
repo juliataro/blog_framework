@@ -36,7 +36,7 @@ class Users extends Controller
             } else if ($this->usersModel->findUserByEmail($data['email'])) {
                 $data['email_err'] = 'Email is already taken';
             }
-            if (empty ($data['password'])) {
+            if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter the password';
             } else if (strlen($data['password']) < 6) {
                 $data['password_err'] = 'Password must consists at least 6 caracters';
@@ -48,21 +48,27 @@ class Users extends Controller
             } else if ($data['password'] !== $data['confirm_password']) {
                 $data['confirm_password_err'] = 'Passwords do not match';
             }
+            if (empty($data['name_err']) and empty($data['email_err']) and empty($data['password_err']) and empty($data['confirm_password_err'])) {
+                $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
+                if ($this->usersModel->register($data)) {
+                    header('Location: ' . URLROOT . '/' . 'users/login');
+                } else {
+                    die('Something went wrong');
+                }
+            }
         } else {
-          $data = array(
-              'name' => '',
-               'email' => '',
-               'password' => '',
-               'confirm_password' => '',
-               'name_err' => '',
-               'email_err' => '',
-               'password_err' => '',
-               'confirm_password_err' => ''
+            $data = array(
+                'name' => '',
+                'email' => '',
+                'password' => '',
+                'confirm_password' => '',
+                'name_err' => '',
+                'email_err' => '',
+                'password_err' => '',
+                'confirm_password_err' => ''
             );
-
         }
         $this->view('users/register', $data);
-
     }
 
 
