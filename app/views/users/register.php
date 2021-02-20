@@ -1,5 +1,4 @@
 <?php require_once APPROOT . '/views/inc/header.php'; ?>
-<h1>Add User</h1>
 <div class="row">
     <div class="col-md-6 mx-auto">
         <!-- form register -->

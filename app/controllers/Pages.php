@@ -19,6 +19,7 @@ class Pages extends Controller
             'content'=>'Pages index view is loaded by MVC'
         );
         $this->view('pages/index', $data);
+
     }
 
 }
