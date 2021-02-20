@@ -1,5 +1,6 @@
 <?php
-
+//error
+error_reporting(E_ALL & ~E_NOTICE);
 //config file
 require_once  'config/constants.php';
 //helpers
