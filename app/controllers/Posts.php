@@ -12,6 +12,7 @@ class Posts extends Controller
         //echo 'Pages class is loaded <br>';
     }
     public function index(){
+        $posts = $this->postsModel->getPosts();
         $data = array(
             'posts'=> $posts
         );
