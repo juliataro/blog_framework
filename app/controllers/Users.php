@@ -51,8 +51,8 @@ class Users extends Controller
             if (empty($data['name_err']) and empty($data['email_err']) and empty($data['password_err']) and empty($data['confirm_password_err'])) {
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 if ($this->usersModel->register($data)) {
-                    message('register_success', 'You are registerered and now can log in');
-                    redirect(users/login);
+                    message('register_success', 'You are registred and now can log in');
+                    redirect('users/login');
                 } else {
                     die('Something went wrong');
                 }
@@ -78,13 +78,11 @@ class Users extends Controller
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
             $data = array(
-
                 'email' => trim($_POST['email']),
                 'password' => trim($_POST['password']),
                 'email_err' => '',
                 'password_err' => ''
             );
-
             if (empty($data['email'])) {
                 $data['email_err'] = 'Please enter the email';
             } else if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
@@ -95,39 +93,39 @@ class Users extends Controller
             if (empty($data['password'])) {
                 $data['password_err'] = 'Please enter the password';
             }
+
             if (empty($data['email_err']) and empty($data['password_err'])) {
                 $loggedInUser = $this->usersModel->login($data['email'], $data['password']);
-                if($loggedInUser){
+                if ($loggedInUser) {
                     $this->createUserSession($loggedInUser);
-                    redirect('pages/index');
-                }else{
-                    $date['password_err'] = 'Password is incorrect';
+                    redirect('posts/index');
+                } else {
+                    $data['password_err'] = 'Password is incorrect';
                     $this->view('users/login', $data);
                 }
             }
         } else {
             $data = array(
-
                 'email' => '',
                 'password' => '',
                 'email_err' => '',
                 'password_err' => ''
-
             );
         }
         $this->view('users/login', $data);
     }
 
-    public function logout(){
+    public function logout()
+    {
         session_unset();
         session_destroy();
         redirect('users/login');
     }
 
-    public function createUserSession($user){
-        $_SESSON['user_id'] = $user->id;
-        $_SESSON['user_name'] = $user->name;
-        $_SESSON['user_email'] = $user->email;
-
+    public function createUserSession($user)
+    {
+        $_SESSION['user_id'] = $user->id;
+        $_SESSION['user_name'] = $user->name;
+        $_SESSION['user_email'] = $user->email;
     }
 }
