@@ -5,5 +5,9 @@
     </div>
 ´<p><?php echo $data['post']->content;?></p>
 <a href="<?php echo URLROOT?>/posts" class="btn btn-info">Back<a/>
-
+<hr>
+<?php if ($data['post']->user_id == $_SESSION['user_id']): ?>
+    <a href="<?php echo URLROOT ?>/posts/edit/<?php echo $data['post']->id; ?>" class="btn btn-success">Edit</a>
+    <a href="<?php echo URLROOT?>/posts/delete/<?php echo $data['post']->id;?>" class="btn btn-danger">Delete<a/>
+<?php endif;?>
 <?php require_once APPROOT.'/views/inc/footer.php';?>
