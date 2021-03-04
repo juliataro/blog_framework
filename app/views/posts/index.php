@@ -9,14 +9,7 @@
             <a href="<?php echo URLROOT ?>/posts/add" class="btn btn-primary puul-right">Add Post</a>
         </div>
     <?php endif; ?>
-
-    <!--Post search by tags option--->
-    <select class="form-select" aria-label="Default select example">
-        <?php foreach ($data['tags'] as $tag): ?>
-             <option value="2"><?php echo $data['tags']->name; ?></option>
-        <?php endforeach; ?>
-    </select>
-
+    
 
 </div>
 <?php foreach ($data['posts'] as $post): ?>

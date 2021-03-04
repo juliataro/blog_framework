@@ -35,13 +35,15 @@ class Tags extends Controller
     // function to choose posts on chosen tags  if it's selected in select bar
     public function choice($id)
     {
-        $post = $this->postsModel->getPostById($id);
-        $tags = $this->tagsModel->getPostTags($id);
+        if (!empty($_POST['otsi'])) {
+        $tag = $this->tagsModel->getTagById($id);
+
         $data = array(
-            'post' => $post,
-            'tags' => $tags
+            'tag' => $tag
+
         );
-        $this->view('posts/show', $data);
+        $this->view('tags/create', $data);
+    }
     }
 
 
