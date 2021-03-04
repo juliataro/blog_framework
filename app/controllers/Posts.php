@@ -9,6 +9,7 @@ class Posts extends Controller
     public function __construct()
     {
         $this->postsModel = $this->model('Post');
+        $this->tagsModel = $this->model('Tag');
         //echo 'Pages class is loaded <br>';
     }
 
@@ -25,8 +26,10 @@ class Posts extends Controller
     public function show($id)
     {
         $post = $this->postsModel->getPostById($id);
+        $tags = $this->tagsModel->getPostTags($id);
         $data = array(
-            'post' => $post
+            'post' => $post,
+            'tags' => $tags
         );
         $this->view('posts/show', $data);
     }
@@ -138,6 +141,7 @@ class Posts extends Controller
             $this->view('posts/add', $data);
         }
     }
+
 
 
 

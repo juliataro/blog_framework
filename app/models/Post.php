@@ -86,6 +86,23 @@ class Post
         }
     }
 
+    // GET POSTS BY TAGS
+    public function getPostByTag($id){
+        $this->db->query('
+        SELECT*FROM posts 
+        INNER JOIN post_tags 
+        ON post_tags.post_id=posts.id
+        WHERE post_tags.post_id=:id'
+        );
+        $this->db->bind(':id', $id);
+        $result = $this->db->getAll();
+        return $result;
+    }
+    //SELECT*FROM posts
+    //        INNER JOIN post_tags INNER JOIN tags
+    //        ON post_tags.post_id=posts.id
+    //        AND post_tags.tag_id=tags.id
+
 
 
 }

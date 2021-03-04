@@ -6,6 +6,13 @@
         Created by <?php echo $data['post']->user_id; ?> at <?php echo $data['post']->created_at; ?>
     </div>
 
+<!--TAGGGGGS view-->
+    <div class="row d-flex ">
+<?php foreach ($data['tags'] as $tag): ?>
+    <button type="button" class="btn btn-outline-info ml-3 mb-3"><a href="<?php echo URLROOT ?>/tags/show/<?php echo $tag->id; ?>" class=""><?php echo $tag->name; ?></a></button>
+<?php endforeach; ?>
+</div>
+
 <!--content of post-->
     <p><?php echo $data['post']->content; ?></p>
 
